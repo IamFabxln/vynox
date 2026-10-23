@@ -1,0 +1,241 @@
+{
+  "users": [
+    {
+      "id": "user_admin_001",
+      "name": "Administrador Vynox",
+      "email": "fedezyljx@gmail.com",
+      "password_hash": "$2b$10$JU030EgKm/AohtniTTuY2egdhFbFKY183P7L6hcofyLY5f27Qp8gu",
+      "role": "superadmin",
+      "avatar": "/assets/default-cover.svg",
+      "created_at": "2026-10-22T16:08:27.972Z",
+      "last_login": "2026-10-23T08:34:44.261Z",
+      "status": "active"
+    }
+  ],
+  "playlists": [
+    {
+      "id": "pl_1792687262636_bbh8",
+      "user_id": "user_admin_001",
+      "name": "Mi Primera Lista Vynox",
+      "description": "Música seleccionada",
+      "tracks": [],
+      "created_at": "2026-10-22T16:41:02.636Z",
+      "updated_at": "2026-10-22T16:41:02.636Z"
+    }
+  ],
+  "favorites": [
+    {
+      "id": "fav_1792687262624_f7mx",
+      "user_id": "user_admin_001",
+      "track_id": "test_track_1",
+      "track": {
+        "id": "test_track_1",
+        "title": "Test Track",
+        "artist": "Test Artist",
+        "artwork": "/assets/default-cover.svg",
+        "duration": 180,
+        "genre": "Electronic",
+        "stream_url": "https://api.audius.co"
+      },
+      "created_at": "2026-10-22T16:41:02.625Z"
+    }
+  ],
+  "history": [
+    {
+      "id": "hist_1792744005431_1maw",
+      "user_id": "user_admin_001",
+      "track_id": "GNQJ5dl",
+      "track": {
+        "id": "GNQJ5dl",
+        "title": "ISOxo x John Newman x Excision & Space Laces - Love Me Again (Juicebox Edit)",
+        "artist": "Juicebox",
+        "artist_handle": "Juiceboxdubs",
+        "artwork": "https://audius-content-13.figment.io/content/baeaaaiqseav7uotpcgqc3cvfimwarbiulujqgur3s5lfauwcuocugv5evosje/480x480.jpg",
+        "duration": 159,
+        "genre": "Edit Pack",
+        "stream_url": "https://api.audius.co/v1/tracks/GNQJ5dl/stream?app_name=VynoxPlay&client_id=2cc593fc814461263d282a84286fd4f72c79562e"
+      },
+      "played_at": "2026-10-23T08:26:45.431Z"
+    },
+    {
+      "id": "hist_1792742249017",
+      "user_id": "user_admin_001",
+      "track_id": "dK02Eb0",
+      "track": {
+        "id": "dK02Eb0",
+        "title": "The Whole 9",
+        "artist": "HBK JAMAL ",
+        "artist_handle": "HBK_JAMAL",
+        "artwork": "https://val012.open-audio-validator.com/content/baeaaaiqseaefb3psafkffwoxxuvcz5mv4dpw3nkekqvy2qru2aqmxountlloc/480x480.jpg",
+        "duration": 141,
+        "genre": "Pop",
+        "stream_url": "https://api.audius.co/v1/tracks/dK02Eb0/stream?app_name=VynoxPlay&client_id=2cc593fc814461263d282a84286fd4f72c79562e"
+      },
+      "played_at": "2026-10-23T07:57:29.017Z"
+    },
+    {
+      "id": "hist_1792742112746",
+      "user_id": "user_admin_001",
+      "track_id": "mzXmz1",
+      "track": {
+        "id": "mzXmz1",
+        "title": "On The Floor",
+        "artist": "Ciara Graves",
+        "artist_handle": "ciaragraves",
+        "artwork": "https://audius-content-4.figment.io/content/baeaaaiqsebkzr2fnqn7cuser72u2ipxqb53q5p322vao3ewyvaagdpx62h5ja/480x480.jpg",
+        "duration": 180,
+        "genre": "Dubstep",
+        "stream_url": "https://api.audius.co/v1/tracks/mzXmz1/stream?app_name=VynoxPlay&client_id=2cc593fc814461263d282a84286fd4f72c79562e"
+      },
+      "played_at": "2026-10-23T07:55:12.747Z"
+    },
+    {
+      "id": "hist_1792741990238",
+      "user_id": "user_admin_001",
+      "track_id": "mzXmz1",
+      "track": {
+        "id": "mzXmz1",
+        "title": "On The Floor",
+        "artist": "Ciara Graves",
+        "artist_handle": "ciaragraves",
+        "artwork": "https://audius-content-4.figment.io/content/baeaaaiqsebkzr2fnqn7cuser72u2ipxqb53q5p322vao3ewyvaagdpx62h5ja/480x480.jpg",
+        "duration": 180,
+        "genre": "Dubstep",
+        "stream_url": "https://api.audius.co/v1/tracks/mzXmz1/stream?app_name=VynoxPlay&client_id=2cc593fc814461263d282a84286fd4f72c79562e"
+      },
+      "played_at": "2026-10-23T07:53:10.238Z"
+    },
+    {
+      "id": "hist_1792741723782",
+      "user_id": "user_admin_001",
+      "track_id": "b4ay8gk",
+      "track": {
+        "id": "b4ay8gk",
+        "title": "Dizrupt - Say What",
+        "artist": "Dizrupt",
+        "artist_handle": "dizruptdnb",
+        "artwork": "https://audius-content-11.figment.io/content/baeaaaiqsecjzomeujspfbko4mflcuf43r7fwpqzucu4qegswxl3ozjbqgyj2q/480x480.jpg",
+        "duration": 235,
+        "genre": "Drum & Bass",
+        "stream_url": "https://api.audius.co/v1/tracks/b4ay8gk/stream?app_name=VynoxPlay&client_id=2cc593fc814461263d282a84286fd4f72c79562e"
+      },
+      "played_at": "2026-10-23T07:48:43.782Z"
+    },
+    {
+      "id": "hist_1792741703789",
+      "user_id": "user_admin_001",
+      "track_id": "6ExvN2E",
+      "track": {
+        "id": "6ExvN2E",
+        "title": "DANGR (mx) - Alicia",
+        "artist": "DANGR",
+        "artist_handle": "DANGR.music",
+        "artwork": "https://val015.open-audio-validator.com/content/baeaaaiqsec65tf3efsqqhlmi6mdq7jwny6b67cedbgbq7iowe2lwdpfc65m7c/480x480.jpg",
+        "duration": 320,
+        "genre": "Techno",
+        "stream_url": "https://api.audius.co/v1/tracks/6ExvN2E/stream?app_name=VynoxPlay&client_id=2cc593fc814461263d282a84286fd4f72c79562e"
+      },
+      "played_at": "2026-10-23T07:48:23.789Z"
+    },
+    {
+      "id": "hist_1792741691027",
+      "user_id": "user_admin_001",
+      "track_id": "gbQYldZ",
+      "track": {
+        "id": "gbQYldZ",
+        "title": "Henrrish V - HANDSUP!",
+        "artist": "Henrrish V",
+        "artist_handle": "henrrishv",
+        "artwork": "https://audius-content-6.figment.io/content/baeaaaiqseb3dzf2l3yj5erc7s7ns4ej6d5qt6ezeuhffibpulduret5g4hrgc/480x480.jpg",
+        "duration": 168,
+        "genre": "Dubstep",
+        "stream_url": "https://api.audius.co/v1/tracks/gbQYldZ/stream?app_name=VynoxPlay&client_id=2cc593fc814461263d282a84286fd4f72c79562e"
+      },
+      "played_at": "2026-10-23T07:48:11.027Z"
+    }
+  ],
+  "ads": [],
+  "notifications": [],
+  "reports": [
+    {
+      "id": "rep_1792743023469",
+      "reporter_id": "user_admin_001",
+      "reporter_name": "Administrador Vynox",
+      "reported_type": "track",
+      "target_id": "a5aXGmz",
+      "target_title": "nazah - Return feat. Bee-z , Bolu Adubi & perdie - Radio Juicy",
+      "reason": "Otro motivo - Prueba ",
+      "status": "pending",
+      "created_at": "2026-10-23T08:10:23.469Z"
+    }
+  ],
+  "audit_logs": [
+    {
+      "id": "aud_1792743059594_2if",
+      "admin_id": "user_admin_001",
+      "admin_name": "Administrador Vynox",
+      "action": "ad_update",
+      "target": "Vynox Sound Experience",
+      "details": "Anuncio actualizado",
+      "timestamp": "2026-10-23T08:10:59.594Z"
+    },
+    {
+      "id": "aud_1792743056693_zf1",
+      "admin_id": "user_admin_001",
+      "admin_name": "Administrador Vynox",
+      "action": "ad_update",
+      "target": "Vynox Sound Experience",
+      "details": "Anuncio actualizado",
+      "timestamp": "2026-10-23T08:10:56.693Z"
+    },
+    {
+      "id": "aud_1792743053110_gxx",
+      "admin_id": "user_admin_001",
+      "admin_name": "Administrador Vynox",
+      "action": "ad_update",
+      "target": "Vynox Play • Audio Premium",
+      "details": "Anuncio actualizado",
+      "timestamp": "2026-10-23T08:10:53.110Z"
+    },
+    {
+      "id": "aud_1792742335880_d2f",
+      "admin_id": "user_admin_001",
+      "admin_name": "Administrador Vynox",
+      "action": "system_backup_export",
+      "target": "vynox_play_backup_2026-10-23T07-58-55-880Z.json",
+      "details": "Descarga de copia de seguridad del sistema",
+      "timestamp": "2026-10-23T07:58:55.880Z"
+    }
+  ],
+  "security_logs": [
+    {
+      "id": "sec_1792744484261_66y",
+      "event": "login_success",
+      "email": "fedezyljx@gmail.com",
+      "ip": "127.0.0.1",
+      "user_agent": "Desconocido",
+      "timestamp": "2026-10-23T08:34:44.261Z",
+      "details": "Inicio de sesión correcto"
+    },
+    {
+      "id": "sec_1792742335831_ydh",
+      "event": "login_success",
+      "email": "fedezyljx@gmail.com",
+      "ip": "127.0.0.1",
+      "user_agent": "node",
+      "timestamp": "2026-10-23T07:58:55.831Z",
+      "details": "Inicio de sesión correcto"
+    }
+  ],
+  "settings": {
+    "platform_name": "Vynox Play",
+    "logo_url": "/assets/vynox-logo.svg",
+    "welcome_text": "Bienvenido a Vynox Play. Streaming musical de alta fidelidad.",
+    "info_text": "Vynox Play combina el catálogo oficial de Audius con curaduría independiente.",
+    "legal_text": "Todos los derechos reservados © 2026 Vynox Play.",
+    "maintenance_mode": false,
+    "updated_at": "2026-10-23T07:58:43.028Z"
+  },
+  "custom_tracks": [],
+  "system_errors": []
+}
