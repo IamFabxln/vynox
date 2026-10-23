@@ -1,0 +1,24 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportHeight="108"
+    android:viewportWidth="108">
+    <!-- Amber accent circle glow -->
+    <path
+        android:fillColor="#1F1C18"
+        android:strokeColor="#D97706"
+        android:strokeWidth="3"
+        android:pathData="M54,24 A30,30 0 1,1 53.9,24 Z" />
+    <!-- Play Triangle Symbol in warm amber -->
+    <path
+        android:fillColor="#D97706"
+        android:pathData="M48,39 L68,54 L48,69 Z" />
+    <!-- Vynox V emblem -->
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#FAF7F2"
+        android:strokeWidth="2.5"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M36,44 L40,54 L44,44" />
+</vector>
