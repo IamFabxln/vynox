@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="100%" height="100%">
+  <defs>
+    <linearGradient id="warm-cover-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#26211C" />
+      <stop offset="50%" stop-color="#1A1715" />
+      <stop offset="100%" stop-color="#0F0E0D" />
+    </linearGradient>
+    <linearGradient id="warm-amber-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F59E0B" />
+      <stop offset="100%" stop-color="#D97706" />
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" fill="url(#warm-cover-bg)" />
+  <circle cx="200" cy="200" r="130" stroke="url(#warm-amber-grad)" stroke-width="2" stroke-dasharray="12 8" opacity="0.35" />
+  <circle cx="200" cy="200" r="85" stroke="#3D352E" stroke-width="3" opacity="0.7" />
+  <circle cx="200" cy="200" r="40" fill="#141312" stroke="url(#warm-amber-grad)" stroke-width="2" />
+  <path d="M194 182 L214 200 L194 218 Z" fill="url(#warm-amber-grad)" />
+  <text x="200" y="320" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-weight="700" font-size="16" letter-spacing="3" fill="#C7C2B8" text-anchor="middle">
+    VYNOX PLAY
+  </text>
+</svg>
