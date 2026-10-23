@@ -1,0 +1,6 @@
+{
+  "name": "Vynox Play",
+  "description": "Plataforma web de música de última generación con diseño tecnológico, reproductor avanzado e integración oficial de Audius.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
