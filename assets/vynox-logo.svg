@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 64" fill="none" class="vynox-logo">
+  <defs>
+    <!-- Warm Amber & Mocha Copper Gradients -->
+    <linearGradient id="vynox-warm-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F59E0B"/>
+      <stop offset="50%" stop-color="#D97706"/>
+      <stop offset="100%" stop-color="#B45309"/>
+    </linearGradient>
+    <linearGradient id="vynox-copper-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#E07A5F"/>
+      <stop offset="100%" stop-color="#D97706"/>
+    </linearGradient>
+    <filter id="warm-glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="2.5" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Emblem: Warm Espresso Vinyl Disc with Amber Core -->
+  <g transform="translate(6, 6)">
+    <!-- Outer Vinyl Groove Glow -->
+    <circle cx="26" cy="26" r="24" stroke="url(#vynox-warm-grad)" stroke-width="2.5" stroke-dasharray="110 40" stroke-linecap="round" opacity="0.9" filter="url(#warm-glow)"/>
+    <!-- Inner Vinyl Groove -->
+    <circle cx="26" cy="26" r="18" stroke="#3D342B" stroke-width="1.5" stroke-dasharray="8 6" opacity="0.8"/>
+    <!-- Center Core -->
+    <circle cx="26" cy="26" r="11" fill="#181614" stroke="url(#vynox-warm-grad)" stroke-width="2"/>
+    <!-- Play Triangular Accent -->
+    <polygon points="23,20 33,26 23,32" fill="url(#vynox-warm-grad)"/>
+    <!-- Orbiting Accent Dot -->
+    <circle cx="46" cy="18" r="2.5" fill="#F59E0B" filter="url(#warm-glow)"/>
+  </g>
+
+  <!-- Wordmark -->
+  <text x="68" y="38" font-family="'Plus Jakarta Sans', system-ui, -apple-system, sans-serif" font-weight="900" font-size="24" letter-spacing="2" fill="#FAF7F2">
+    VYNOX
+  </text>
+  <text x="168" y="38" font-family="'Plus Jakarta Sans', system-ui, -apple-system, sans-serif" font-weight="800" font-size="24" letter-spacing="1.5" fill="url(#vynox-warm-grad)">
+    PLAY
+  </text>
+
+  <!-- Warm Equalizer Accent Bars -->
+  <g transform="translate(244, 23)">
+    <rect x="0" y="8" width="3" height="12" rx="1.5" fill="#E07A5F" />
+    <rect x="6" y="2" width="3" height="18" rx="1.5" fill="#D97706" />
+    <rect x="12" y="10" width="3" height="10" rx="1.5" fill="#F59E0B" />
+    <rect x="18" y="5" width="3" height="15" rx="1.5" fill="#B45309" />
+  </g>
+</svg>
