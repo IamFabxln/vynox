@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <title>Vynox Play</title>
+  <meta name="description" content="Vynox Play: plataforma de música de última generación con diseño refinado, reproductor avanzado y catálogo oficial de Audius." />
+  <style>body{color:#faf7f2;background-color:#11100f;justify-content:center;align-items:center;min-height:100vh;margin:0;padding:0;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;display:flex;overflow:hidden}.splash-container{text-align:center;flex-direction:column;align-items:center;gap:16px;display:flex}.spinner{border:3px solid #d9770633;border-top-color:#d97706;border-radius:50%;width:40px;height:40px;animation:.8s linear infinite spin}@keyframes spin{to{transform:rotate(360deg)}}.brand-title{letter-spacing:-.02em;color:#faf7f2;font-size:20px;font-weight:700}</style>
+  <script>
+    (function() {
+      var token = null;
+      try {
+        token = localStorage.getItem('vynox_token') || sessionStorage.getItem('vynox_token');
+      } catch (e) {}
+
+      var target = token ? '/html/dash.html' : '/html/login.html';
+      window.location.replace(target);
+    })();
+  </script>
+</head>
+<body>
+  <div class="splash-container">
+    <div class="spinner"></div>
+    <div class="brand-title">Vynox Play</div>
+  </div>
+</body>
+</html>
