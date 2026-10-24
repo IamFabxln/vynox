@@ -27,16 +27,19 @@ jobs:
       - name: Configurar Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20.19.0'
+          node-version: '22'
+          package-manager-cache: false
 
-      - name: Comprobar archivos del proyecto
+      - name: Comprobar archivos
         run: |
-          test -f package.json || (echo "ERROR: Falta package.json en la raíz" && exit 1)
-          test -d android || (echo "ERROR: Falta la carpeta android" && exit 1)
-          echo "Archivos principales encontrados."
+          test -f package.json
+          test -d android
+          echo "Archivos encontrados."
 
       - name: Instalar dependencias
-        run: npm install --legacy-peer-deps --no-fund --no-audit
+        run: |
+          npm cache clean --force
+          npm install --legacy-peer-deps --no-audit --no-fund
 
       - name: Preparar proyecto Android
         run: npm run cap:build
@@ -57,3 +60,4 @@ jobs:
           path: android/app/build/outputs/apk/debug/app-debug.apk
           if-no-files-found: error
           retention-days: 7
+          
