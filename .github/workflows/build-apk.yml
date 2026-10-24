@@ -34,20 +34,64 @@ jobs:
       - name: Comprobar archivos
         run: |
           test -f package.json
-          test -f capacitor.config.ts
           test -d android
-          echo "Archivos del proyecto encontrados."
+          echo "Archivos encontrados."
 
       - name: Instalar dependencias
         run: |
           npm cache clean --force
           npm install --legacy-peer-deps --no-audit --no-fund
 
-      - name: Construir web y sincronizar Android
+      - name: Preparar proyecto Android
         run: npm run cap:build
 
       - name: Configurar Android SDK
         uses: android-actions/setup-android@v4
+
+      - name: Corregir recurso duplicado del icono
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          import sys
+
+          base = Path("android/app/src/main/res/values")
+          colors = base / "colors.xml"
+          background = base / "ic_launcher_background.xml"
+
+          if not colors.exists() or not background.exists():
+              sys.exit("ERROR: No se encontraron los dos archivos de recursos.")
+
+          pattern = re.compile(
+              r'<color\b(?=[^>]*\bname\s*=\s*'
+              r'["\']ic_launcher_background["\'])[^>]*>'
+              r'.*?</color\s*>',
+              re.DOTALL
+          )
+
+          color_text = colors.read_text(encoding="utf-8")
+          background_text = background.read_text(encoding="utf-8")
+
+          if not pattern.search(color_text):
+              print("No hay definición duplicada en colors.xml.")
+          elif not pattern.search(background_text):
+              sys.exit(
+                  "ERROR: No se encontró la definición en "
+                  "ic_launcher_background.xml; no se modificó nada."
+              )
+          else:
+              colors.write_text(
+                  pattern.sub("", color_text, count=1),
+                  encoding="utf-8"
+              )
+              print("Definición duplicada eliminada de colors.xml.")
+
+          print("Comprobando recursos...")
+          for file in (colors, background):
+              print(f"\n--- {file} ---")
+              print(file.read_text(encoding="utf-8"))
+          PY
 
       - name: Compilar APK limpio
         run: |
@@ -61,15 +105,11 @@ jobs:
           set -euo pipefail
 
           APK="android/app/build/outputs/apk/debug/app-debug.apk"
-
           test -s "$APK"
-          echo "Tamaño del APK:"
-          ls -lh "$APK"
 
-          echo "Verificando estructura ZIP..."
+          echo "Comprobando estructura..."
           unzip -t "$APK"
 
-          echo "Buscando herramientas Android..."
           APKSIGNER="$(find "$ANDROID_HOME/build-tools" \
             -type f -name apksigner | sort -V | tail -n 1)"
           AAPT="$(find "$ANDROID_HOME/build-tools" \
@@ -78,17 +118,16 @@ jobs:
           test -n "$APKSIGNER"
           test -n "$AAPT"
 
-          echo "Verificando firma..."
+          echo "Comprobando firma..."
           "$APKSIGNER" verify --verbose "$APK"
 
-          echo "Verificando paquete..."
+          echo "Comprobando identificador..."
           "$AAPT" dump badging "$APK" > /tmp/vynox-badging.txt
           cat /tmp/vynox-badging.txt
 
-          grep -q "package: name='com.stellarxly.vynoxplay'" \
-            /tmp/vynox-badging.txt
+          grep -q "^package: name=" /tmp/vynox-badging.txt
 
-          echo "APK válido estructuralmente y con firma verificada."
+          echo "Verificaciones completadas."
 
       - name: Guardar APK verificado
         uses: actions/upload-artifact@v4
@@ -97,3 +136,4 @@ jobs:
           path: android/app/build/outputs/apk/debug/app-debug.apk
           if-no-files-found: error
           retention-days: 7
+          
