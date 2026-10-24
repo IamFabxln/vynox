@@ -1,3 +1,4 @@
+
 name: Build Vynox Play APK
 
 on:
@@ -18,11 +19,11 @@ jobs:
       - name: Descargar proyecto
         uses: actions/checkout@v4
 
-      - name: Configurar Java
+      - name: Configurar Java 21
         uses: actions/setup-java@v4
         with:
           distribution: temurin
-          java-version: '17'
+          java-version: '21'
 
       - name: Configurar Node.js
         uses: actions/setup-node@v4
@@ -67,37 +68,23 @@ jobs:
                   r'[^>]*>.*?</color>'
               )
 
-              color_match = re.search(
-                  pattern, color_text, flags=re.DOTALL
-              )
-              duplicate_match = re.search(
-                  pattern, duplicate_text, flags=re.DOTALL
-              )
-
-              if color_match and duplicate_match:
+              if re.search(pattern, color_text, re.DOTALL) and re.search(
+                  pattern, duplicate_text, re.DOTALL
+              ):
                   color_file.write_text(
                       re.sub(
-                          pattern,
-                          "",
-                          color_text,
-                          count=1,
-                          flags=re.DOTALL
+                          pattern, "", color_text,
+                          count=1, flags=re.DOTALL
                       )
                   )
-                  print(
-                      "Se eliminó la definición duplicada "
-                      "de colors.xml."
-                  )
+                  print("Recurso duplicado corregido.")
               else:
                   raise SystemExit(
-                      "No se pudo identificar con seguridad "
-                      "el recurso duplicado. Se detiene la compilación."
+                      "No se pudo identificar el recurso duplicado."
                   )
           else:
-              print(
-                  "No se encontraron ambos archivos; "
-                  "no se modificaron recursos."
-              )
+              print("No se encontraron ambos archivos.")
+
           PY
 
       - name: Compilar APK
