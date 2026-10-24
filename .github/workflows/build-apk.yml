@@ -12,7 +12,7 @@ permissions:
 
 jobs:
   build:
-    name: Compile Android APK
+    name: Build and verify Vynox Play APK
     runs-on: ubuntu-latest
 
     steps:
@@ -34,69 +34,66 @@ jobs:
       - name: Comprobar archivos
         run: |
           test -f package.json
+          test -f capacitor.config.ts
           test -d android
-          echo "Archivos encontrados."
+          echo "Archivos del proyecto encontrados."
 
       - name: Instalar dependencias
         run: |
           npm cache clean --force
           npm install --legacy-peer-deps --no-audit --no-fund
 
-      - name: Preparar proyecto Android
+      - name: Construir web y sincronizar Android
         run: npm run cap:build
 
       - name: Configurar Android SDK
         uses: android-actions/setup-android@v4
 
-      - name: Corregir recursos duplicados del icono
-        shell: bash
-        run: |
-          python3 - <<'PY'
-          from pathlib import Path
-          import re
-
-          base = Path("android/app/src/main/res/values")
-          color_file = base / "colors.xml"
-          duplicate_file = base / "ic_launcher_background.xml"
-
-          if color_file.exists() and duplicate_file.exists():
-              color_text = color_file.read_text()
-              duplicate_text = duplicate_file.read_text()
-
-              pattern = (
-                  r'<color\s+name=["\']ic_launcher_background["\']'
-                  r'[^>]*>.*?</color>'
-              )
-
-              if re.search(pattern, color_text, re.DOTALL) and re.search(
-                  pattern, duplicate_text, re.DOTALL
-              ):
-                  color_file.write_text(
-                      re.sub(
-                          pattern, "", color_text,
-                          count=1, flags=re.DOTALL
-                      )
-                  )
-                  print("Recurso duplicado corregido.")
-              else:
-                  raise SystemExit(
-                      "No se pudo identificar el recurso duplicado."
-                  )
-          else:
-              print("No se encontraron ambos archivos.")
-
-          PY
-
-      - name: Compilar APK
+      - name: Compilar APK limpio
         run: |
           chmod +x android/gradlew
           cd android
-          ./gradlew clean assembleDebug
+          ./gradlew --no-build-cache clean assembleDebug
 
-      - name: Guardar APK
+      - name: Verificar estructura y firma del APK
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          APK="android/app/build/outputs/apk/debug/app-debug.apk"
+
+          test -s "$APK"
+          echo "Tamaño del APK:"
+          ls -lh "$APK"
+
+          echo "Verificando estructura ZIP..."
+          unzip -t "$APK"
+
+          echo "Buscando herramientas Android..."
+          APKSIGNER="$(find "$ANDROID_HOME/build-tools" \
+            -type f -name apksigner | sort -V | tail -n 1)"
+          AAPT="$(find "$ANDROID_HOME/build-tools" \
+            -type f -name aapt | sort -V | tail -n 1)"
+
+          test -n "$APKSIGNER"
+          test -n "$AAPT"
+
+          echo "Verificando firma..."
+          "$APKSIGNER" verify --verbose "$APK"
+
+          echo "Verificando paquete..."
+          "$AAPT" dump badging "$APK" > /tmp/vynox-badging.txt
+          cat /tmp/vynox-badging.txt
+
+          grep -q "package: name='com.stellarxly.vynoxplay'" \
+            /tmp/vynox-badging.txt
+
+          echo "APK válido estructuralmente y con firma verificada."
+
+      - name: Guardar APK verificado
         uses: actions/upload-artifact@v4
         with:
-          name: Vynox-Play-APK
+          name: Vynox-Play-APK-Verificado
           path: android/app/build/outputs/apk/debug/app-debug.apk
           if-no-files-found: error
           retention-days: 7
